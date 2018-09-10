@@ -1,3 +1,9 @@
+<?php
+ $objm = \Magento\Framework\App\ObjectManager::getInstance(); ?>
+    <?php $customerSession = $objm->get('Magento\Customer\Model\Session'); ?>
+
+
+
 
 <fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
 
@@ -6,12 +12,12 @@
         <div class="control">
 
             <input type="text" name="phone" id="phone" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>"
-                   value=""
+                    value="<?php echo $customerSession->getCustomer()->getPhone();?>"
                    class="input-text"  autocomplete="off"
                    data-validate="{required:true, 'validate-phoneLax':true}"
-
             />
             </div>
-        </div>
-       
+    </div>
+
+
     </fieldset>
